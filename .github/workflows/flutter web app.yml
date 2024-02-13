@@ -32,12 +32,25 @@ jobs:
           name: flutter-web-app
           path: './build/web/'
           overwrite: true
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Downlads Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: flutter-web-app 
-          path: './artifacts/'
-      - name: Display structure of downloaded files
-        run: ls -R
+          name: flutter-web-app
+          path: '.'
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
         
         
