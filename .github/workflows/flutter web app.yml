@@ -39,7 +39,7 @@ jobs:
       - name: Get Packages
         run: flutter pub get
       - name: Build Web App
-        run: flutter build web
+        run: flutter build web --web-renderer html
       - name: Uploads artifacts
         uses: actions/upload-artifact@v4
         with:
