@@ -26,4 +26,11 @@ jobs:
         run: flutter pub get
       - name: Build Web App
         run: flutter build web
+      - name: Uploads artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: flutter-web-app
+          path: './build/web/'
+          overwrite: true
+        
         
