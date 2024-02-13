@@ -32,5 +32,12 @@ jobs:
           name: flutter-web-app
           path: './build/web/'
           overwrite: true
+      - name: Downlads Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: flutter-web-app 
+          path: './artifacts/'
+      - name: Display structure of downloaded files
+        run: ls -R
         
         
